@@ -1,0 +1,17 @@
+name: projects/qwiklabs-gcp-01-8fe92c1fdc26/policy
+admissionWhitelistPatterns:
+  - namePattern: gcr.io/google-containers/*
+  - namePattern: k8s.gcr.io/*
+  - namePattern: gke.gcr.io/*
+  - namePattern: gcr.io/stackdriver-agents/*
+  - namePattern: gcr.io/example-project/helloworld
+  - namePattern: loc-ref
+  - namePattern: gcr.io/example-project/helloworld:latest
+  - namePattern: gcr.io/example-project/helloworld:my-tag
+  - namePattern: gcr.io/example-project/helloworld:v1.*
+globalPolicyEvaluationMode: ENABLE
+defaultAdmissionRule:
+  evaluationMode: REQUIRE_ATTESTATION
+  enforcementMode: ENFORCED_BLOCK_AND_AUDIT_LOG
+  requireAttestationsBy:
+  - projects/example-project/attestors/secure-build
